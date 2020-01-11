@@ -3,6 +3,10 @@
 # flag to fail bash script if error occurs
 set -e
 
+# grabs PG_DEV_PASSWORD from env, if it doesn't exist use 'password' string
+PG_DEV_PASSWORD=${PG_DEV_PASSWORD:-'password'}
+PG_SCHEMA_FILE=${PG_SCHEMA_FILE:-'db/schema.sql'}
+
 # pulls latest postgres image
 docker pull postgres:12.1
 
@@ -23,3 +27,7 @@ else
     brew install postgres
     brew install pgcli
 fi
+
+# deploy schema to container
+export PGPASSWORD=${PG_DEV_PASSWORD} \
+    && psql -h localhost -p 5432 -U postgres -f ${PG_SCHEMA_FILE}
