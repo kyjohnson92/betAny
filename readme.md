@@ -1,0 +1,5 @@
+# BetAny
+
+Requirements:
+* Docker
+
