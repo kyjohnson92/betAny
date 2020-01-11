@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# flag to fail installation if
+# flag to fail bash script if error occurs
 set -e
 
 # pulls latest postgres image
