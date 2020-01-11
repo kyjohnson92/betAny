@@ -20,5 +20,6 @@ if type pgcli >/dev/null 2>&1; then
     echo 'pgcli already installed...'
 else
     echo 'installing pgcli...'
+    brew install postgres
     brew install pgcli
 fi
