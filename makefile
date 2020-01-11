@@ -1,4 +1,4 @@
-PHONY: db
+PHONY: db connect-db cleanup-db
 PG_DEV_PASSWORD=password
 
 db:
