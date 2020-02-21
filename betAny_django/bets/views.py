@@ -13,12 +13,13 @@ from .serializer import UserSerializer, BetSerializer
 
 
 # Create your views here.
-def index(request):
-    return HttpResponse("betAny Landing Page")
+def index(request, *args, **kwargs):
+    print(args, kwargs)
+    return render(request, "index.html", {})
 
 
-class UserAPI(generics.ListCreateAPIView):
-    queryset = User.users.all()
+class UserAPI(generics.ListAPIView):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAdminUser]
 
@@ -27,3 +28,32 @@ class UserAPI(generics.ListCreateAPIView):
         serializer = UserSerializer(queryset, many=True)
         return Response(serializer.data)
 
+class UserAPIDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminUser]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+class BetAPI(generics.ListAPIView):
+    queryset = Bet.objects.all()
+    serializer_class = BetSerializer
+    permission_classes = [IsAdminUser]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = BetSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+class BetAPIDetail(generics.RetrieveAPIView):
+    queryset = Bet.objects.all()
+    serializer_class = BetSerializer
+    permission_classes = [IsAdminUser]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = BetSerializer(queryset, many=True)
+        return Response(serializer.data)

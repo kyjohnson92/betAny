@@ -12,16 +12,8 @@ class User(models.Model):
 
     def __str__(self):
         return str(self.userID)
-    def userUserID(self):
-        return self.userID
-    def userFirstName(self):
-        return self.firstName
-    def userLastName(self):
-        return self.lastName
-    def userAssets(self):
-        return self.assets
         
-    users = models.Manager()
+    objects = models.Manager()
 
 
 class Bet(models.Model):
@@ -39,16 +31,6 @@ class Bet(models.Model):
 
     def __str__(self):
         return str(self.betID)
-    def bettor(self):
-        return self.bettorID
-    def betInfo(self):
-        return self.description
-    def amount(self):
-        return self.bettor_amount
-    def bettee(self):
-        return self.betteeID
-    def outcome(self):
-        return self.betOutcome
-
-    bets = models.Manager()
+ 
+    objects = models.Manager()
     
