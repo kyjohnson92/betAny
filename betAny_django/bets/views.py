@@ -4,23 +4,26 @@ from .models import Bet, User
 from django.core import serializers
 import json
 from django.forms.models import model_to_dict
+from django.views import View
+from rest_framework import generics
+from rest_framework.renderers import JSONRenderer
+from rest_framework.response import Response
+from rest_framework.permissions import IsAdminUser
+from .serializer import UserSerializer, BetSerializer
 
 
 # Create your views here.
 def index(request):
     return HttpResponse("betAny Landing Page")
 
-def user(request):
-    u = User.users.all()
-    #user_dict = model_to_dict(u)
-    serialized_object = serializers.serialize('json', [u,])
-    struct = json.loads(serialized_object)
-    #return JsonResponse(serialized_object, safe=False)
-    data = json.dumps(struct)
-    return HttpResponse(data,mimetype='application/json')
 
-def bets(request):
-    b = Bet.bets.all()
-    #bet_list = list(b)
-    serialized_bets = serializers.serialize('json', b)
-    return JsonResponse(serialized_bets, safe=False)
+class UserAPI(generics.ListCreateAPIView):
+    queryset = User.users.all()
+    serializer_class = UserSerializer
+    permission_classes = [IsAdminUser]
+
+    def list(self, request):
+        queryset = self.get_queryset()
+        serializer = UserSerializer(queryset, many=True)
+        return Response(serializer.data)
+
