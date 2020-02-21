@@ -1,8 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import Bet, User
-from django.core import serializers
-import json
 from django.forms.models import model_to_dict
 from django.views import View
 from rest_framework import generics
@@ -10,7 +7,7 @@ from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
 from rest_framework.permissions import IsAdminUser
 from .serializer import UserSerializer, BetSerializer
-
+from .models import Bet, User
 
 # Create your views here.
 def index(request, *args, **kwargs):
