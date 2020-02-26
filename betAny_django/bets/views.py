@@ -20,37 +20,37 @@ class UserAPI(generics.ListAPIView):
     serializer_class = UserSerializer
     permission_classes = [IsAdminUser]
 
-    def list(self, request):
-        queryset = self.get_queryset()
-        serializer = UserSerializer(queryset, many=True)
-        return Response(serializer.data)
+    #def list(self, request):
+     #   queryset = self.get_queryset()
+      #  serializer = UserSerializer(queryset, many=True)
+       # return Response(serializer.data)
 
-class UserAPIDetail(generics.RetrieveAPIView):
+class UserAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAdminUser]
 
-    def list(self, request):
-        queryset = self.get_queryset()
-        serializer = UserSerializer(queryset, many=True)
-        return Response(serializer.data)
+    #def list(self, request):
+     #   queryset = self.get_queryset()
+      #  serializer = UserSerializer(queryset, many=True)
+       # return Response(serializer.data)
 
 class BetAPI(generics.ListAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer
     permission_classes = [IsAdminUser]
 
-    def list(self, request):
-        queryset = self.get_queryset()
-        serializer = BetSerializer(queryset, many=True)
-        return Response(serializer.data)
+    #def list(self, request):
+     #   queryset = self.get_queryset()
+      #  serializer = BetSerializer(queryset, many=True)
+       # return Response(serializer.data)
 
-class BetAPIDetail(generics.RetrieveAPIView):
+class BetAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer
     permission_classes = [IsAdminUser]
 
-    def list(self, request):
-        queryset = self.get_queryset()
-        serializer = BetSerializer(queryset, many=True)
-        return Response(serializer.data)
+    #def list(self, request):
+     #   queryset = self.get_queryset()
+      #  serializer = BetSerializer(queryset, many=True)
+       # return Response(serializer.data)
