@@ -7,4 +7,3 @@ def __init__(_x: int128):
 @public
 def set(_x: int128):
     self.stored_data = _x
-

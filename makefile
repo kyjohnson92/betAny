@@ -13,4 +13,4 @@ cleanup-db:
 	docker rm betany-db
 
 test:
-	pytest --ignore=tests/grammar tests/
+	python -m pytest --ignore=tests/grammar tests/
