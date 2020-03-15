@@ -1,17 +1,18 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
-class User(models.Model):
-    userID = models.IntegerField(primary_key=True, unique=True)
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstName = models.CharField(null=False, max_length=25)
     lastName = models.CharField(null=False, max_length=30)
     assets = models.DecimalField(decimal_places=2, max_digits=20, default=0.00)
 
     class Meta:
-        ordering = ['userID']
+        ordering = ['user']
 
     def __str__(self):
-        return str(self.userID)
+        return str(self.user)
         
     objects = models.Manager()
 
