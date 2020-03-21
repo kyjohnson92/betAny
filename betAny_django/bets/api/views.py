@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from django.forms.models import model_to_dict
 from django.views import View
 from rest_framework import generics
 from rest_framework.renderers import JSONRenderer
