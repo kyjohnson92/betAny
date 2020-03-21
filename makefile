@@ -13,5 +13,4 @@ cleanup-db:
 	docker rm betany-db
 
 run:
-	python betAny_django/manage.py migrate
 	python betAny_django/manage.py runserver
