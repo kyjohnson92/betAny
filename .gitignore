@@ -15,6 +15,7 @@ media
 env/
 venv/
 ENV/
+betanyEnv/
 env.bak/
 venv.bak/
 
@@ -25,3 +26,8 @@ venv.bak/
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+
+# mac
+.DS_Store
+
+
