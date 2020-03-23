@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
-from django.forms.models import model_to_dict
 from django.views import View
 from django.urls import reverse_lazy
 from django.views.generic import CreateView,TemplateView
