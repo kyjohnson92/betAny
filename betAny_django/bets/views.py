@@ -7,7 +7,6 @@ from django.views.generic import CreateView,TemplateView
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from .models import Bet, UserProfile
-from . import forms
 
 # Create your views here.
 def index(request, *args, **kwargs):
@@ -30,3 +29,4 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
+    
