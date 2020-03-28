@@ -28,12 +28,6 @@ class UserAPIDetail(generics.RetrieveUpdateDestroyAPIView):
 class BetAPI(generics.ListCreateAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer
-    #permission_classes = [IsAdminUser]
-
-    #def list(self, request):
-     #   queryset = self.get_queryset()
-      #  serializer = BetSerializer(queryset, many=True)
-       # return Response(serializer.data)
 
 class BetAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bet.objects.all()

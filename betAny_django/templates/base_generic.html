@@ -16,12 +16,25 @@
         <a class="navbar-brand" href="#">betAny</a>
       </div>
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="#">Page 1</a></li>
+        <li class="{% if request.path == '/' %} active{% endif %}"><a href="/">Home</a></li>
+        <li class="{% if request.path == '/my-bets' %} active{% endif %}"><a href="/my-bets">My Bets</a></li>
+        <li class="{% if request.path == '/all-bets' %} active{% endif %}"><a href="/all-bets">All Bets</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/accounts/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="/accounts/login/"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li>
+          {% if user.is_authenticated %}
+            <a href="/accounts/logout/">
+              <span class="glyphicon glyphicon-log-out"></span>
+              Logout
+            </a>
+          {% else %}
+            <a href="/accounts/login/">
+              <span class="glyphicon glyphicon-log-in"></span>
+              Login
+            </a>
+          {% endif %}
+        </li>
       </ul>
     </div>
   </nav>
