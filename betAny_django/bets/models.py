@@ -17,11 +17,11 @@ class UserProfile(models.Model):
 
 
 class Bet(models.Model):
-    bettorID = models.ForeignKey(User, related_name='party1', on_delete=models.CASCADE)
     betID = models.AutoField(primary_key=True)
+    bettorID = models.ForeignKey(User, related_name='party1', on_delete=models.CASCADE)
     description = models.CharField(max_length=200)
     bettor_amount = models.DecimalField(decimal_places=2, max_digits=20)
-    betteeID = models.ForeignKey(User, related_name='party2', on_delete=models.CASCADE)
+    betteeID = models.ForeignKey(User, related_name='party2', on_delete=models.CASCADE, blank=True, null=True)
     betOutcome = models.CharField(max_length=20, choices=[('0',''),('1', str(bettorID) + '__Wins'),('2',str(betteeID) +'__Wins')], default='0')
     
     class Meta:
