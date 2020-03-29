@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+
+{% block title %}My Bets{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  {{ user }} Account Page
+  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">login</a>
+{% endif %}
+{% endblock %}
