@@ -8,7 +8,7 @@ function App() {
   const user = useSelector(selectUser);
 
   function onClickLogin() {
-    dispatch(login('john', 'Mowgli4812'));
+    dispatch(login('root', 'password'));
   }
 
   function onClickLogout() {
