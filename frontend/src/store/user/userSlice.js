@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import decode from 'jwt-decode';
 import { getUserToken } from '../../api';
+import { logout as betsLogoutEffect } from '../bets/betsSlice';
 
-export const initialState = {
+// initial user state, provided to reducer, for when user
+// is not already logged in and info is in localStorage
+const initialState = {
   token: undefined,
   id: undefined,
   username: undefined,
@@ -10,27 +13,31 @@ export const initialState = {
   isLoggedIn: false,
 }
 
+// creates slice of user state in redux store.
+// declare initial state, and reducers, which are functions
+// that handle state change.
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     login: (state, action) => {
-      const { id, username } = action.payload;
+      const { id, username, token } = action.payload;
       state.id = id;
+      state.token = token;
       state.username = username;
       state.isLoggedIn = true;
     },
-    logout: () => {
-      localStorage.removeItem('token');
+    logout: (state) => {
+      console.log(state);
       return initialState;
     }
   }
 });
 
 // actions
-export const { login: loginAction, logout } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
-export const login = (username, password) => async (dispatch) => {
+export const loginUser = (username, password) => async (dispatch) => {
   const resp = await getUserToken(username, password);
   const { token} = resp;
   if (token) {
@@ -40,8 +47,7 @@ export const login = (username, password) => async (dispatch) => {
       username,
       token,
     }
-    localStorage.setItem('betAny-user', JSON.stringify(betAnyUser))
-    dispatch(loginAction(betAnyUser));
+    dispatch(login(betAnyUser));
   } else {
     throw new Error('error fetching token');
   }
