@@ -29,6 +29,18 @@ class BetAPI(generics.ListCreateAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer
 
+    # IF we want to only return ALL Bets for admin users
+    # and ONLY return users bets for other users
+    # uncomment this code.
+    # def list(self, request):
+    #   if request.user.is_staff:
+    #     queryset = self.get_queryset()
+    #   else:
+    #     queryset = self.queryset.filter(bettorID=request.user.id)
+
+    #   ser = BetSerializer(queryset, many=True)
+    #   return Response(ser.data)
+
 class BetAPIDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Bet.objects.all()
     serializer_class = BetSerializer
