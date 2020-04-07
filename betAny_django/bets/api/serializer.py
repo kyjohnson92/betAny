@@ -1,4 +1,4 @@
-from rest_framework.serializers import ModelSerializer
+from rest_framework.serializers import ModelSerializer, ValidationError
 from bets.models import UserProfile, Bet
 
 class UserSerializer(ModelSerializer):
@@ -8,7 +8,10 @@ class UserSerializer(ModelSerializer):
         fields = '__all__'
         
 class BetSerializer(ModelSerializer):
-
+    
     class Meta:
         model = Bet
         fields = '__all__'
+
+
+    
