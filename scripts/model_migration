@@ -1,0 +1,21 @@
+#!/bin/bash
+
+branch_name=$(git branch | grep "*" | sed "s/\* //")
+
+manage_py=betAny_django/manage.py
+
+git_file=betAny_django/bets/models.py
+comp_file=scripts/holding_cell/models.py
+
+if [[ $branch_name =  "master" ]]; then
+    if ! cmp -s "$git_file"  "$comp_file"; then
+        python $manage_py makemigrations
+        python $manage_py migrate
+        cp "$git_file" "$comp_file"
+        echo "Changes to Model.py detected. Kai's a donk."  
+    else
+        echo "No migrations needed."
+    fi
+else 
+    echo "Not in master branch."
+fi

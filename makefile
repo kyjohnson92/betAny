@@ -13,3 +13,8 @@ cleanup-db:
 
 run:
 	python betAny_django/manage.py runserver
+
+automigrate-create:
+	touch .git/hooks/post-merge
+	cat scripts/model_migration > .git/hooks/post-merge
+	chmod +x .git/hooks/post-merge
