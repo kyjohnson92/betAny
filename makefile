@@ -9,8 +9,7 @@ connect-db:
 	export PGPASSWORD=$(PG_DEV_PASSWORD) && pgcli -h localhost -p 5432 -U postgres
 
 cleanup-db:
-	docker kill betany-db
-	docker rm betany-db
+	sh ci/db/cleanup.sh
 
 run:
 	python betAny_django/manage.py runserver
