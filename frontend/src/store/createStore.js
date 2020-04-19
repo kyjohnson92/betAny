@@ -23,14 +23,16 @@ const rootReducer = (state, action) => {
 const store = configureStore({
   reducer: rootReducer,
   preloadedState: {
-    user: loadUser()
-  }
-})
+    user: loadUser(),
+  },
+});
 
 // Whenever the store state changes save the user
 // in the future this will save whole redux state.
-store.subscribe(throttle(() => {
-  saveUser(store.getState().user)
-}, 1000))
+store.subscribe(
+  throttle(() => {
+    saveUser(store.getState().user);
+  }, 1000)
+);
 
 export default store;

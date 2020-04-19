@@ -1,6 +1,6 @@
 export const loadUser = () => {
   try {
-    const serializedUser = localStorage.getItem('betAny-user')
+    const serializedUser = localStorage.getItem('betAny-user');
     if (serializedUser === null) {
       return undefined;
     }
@@ -9,7 +9,7 @@ export const loadUser = () => {
     console.log(err);
     return undefined;
   }
-}
+};
 
 export const saveUser = (user) => {
   try {
@@ -18,4 +18,4 @@ export const saveUser = (user) => {
   } catch (err) {
     console.log(err);
   }
-}
+};

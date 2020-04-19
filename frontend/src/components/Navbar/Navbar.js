@@ -14,11 +14,12 @@ export const Navbar = () => {
     { to: '/my-bets', title: 'My Bets' },
     { to: '/all-bets', title: 'All Bets' },
     { to: '/test', title: 'Test' },
-  ]
+  ];
   return (
     <NavbarWrapper>
-      {routes.map(route => <NavbarLink to={route.to} title={route.title} />)}
-    </ NavbarWrapper>
-
-  )
-}
+      {routes.map((route) => (
+        <NavbarLink to={route.to} title={route.title} />
+      ))}
+    </NavbarWrapper>
+  );
+};

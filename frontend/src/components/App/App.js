@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { loginUser, logout, selectUser } from './store/user/userSlice';
-import { fetchBets } from './store/bets/betsSlice';
-import { Navbar } from './components/Navbar';
-import { BetsComponent } from './components/Bets';
+import { loginUser, logout, selectUser } from '../../store/user/userSlice';
+import { fetchBets } from '../../store/bets/betsSlice';
+import { Navbar } from '../Navbar/Navbar';
+import { BetsComponent } from '../Bets/Bets';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,15 +13,17 @@ function App() {
   useEffect(() => {
     // fetch bets when the app loads.
     if (user.isLoggedIn) {
-      dispatch(fetchBets())
+      dispatch(fetchBets());
     }
-  })
+  });
 
   function onClickLogin() {
-    dispatch(loginUser(
-      process.env.BETANY_USER || 'john',
-      process.env.BETANY_PWD || 'Mowgli4812'
-    ));
+    dispatch(
+      loginUser(
+        process.env.BETANY_USER || 'john',
+        process.env.BETANY_PWD || 'Mowgli4812'
+      )
+    );
   }
 
   function onClickLogout() {
@@ -32,18 +34,18 @@ function App() {
     <Router>
       <Navbar />
       <div>
-        {user.isLoggedIn ?
+        {user.isLoggedIn ? (
           <button onClick={onClickLogout}>Logout</button>
-          : <button onClick={onClickLogin}>Login</button>
-        }
+        ) : (
+          <button onClick={onClickLogin}>Login</button>
+        )}
       </div>
       <Switch>
-        <Route path={['/my-bets','/all-bets']}>
+        <Route path={['/my-bets', '/all-bets']}>
           <BetsComponent />
         </Route>
       </Switch>
     </Router>
-
   );
 }
 
