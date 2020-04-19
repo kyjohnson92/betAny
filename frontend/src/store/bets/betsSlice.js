@@ -2,8 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getBets } from '../../api';
 
 const initialState = {
-  bets: []
-}
+  bets: [],
+};
 
 export const betsSlice = createSlice({
   name: 'bets',
@@ -11,18 +11,18 @@ export const betsSlice = createSlice({
   reducers: {
     fetchBetsSuccess: (state, action) => {
       state.bets = action.payload;
-    }
+    },
   },
-})
+});
 
 const { fetchBetsSuccess } = betsSlice.actions;
 
-export const fetchBets = () => async dispatch => {
+export const fetchBets = () => async (dispatch) => {
   const bets = await getBets();
   dispatch(fetchBetsSuccess(bets));
-}
+};
 
 // selectors
-export const selectBets = state => state.bets.bets;
+export const selectBets = (state) => state.bets.bets;
 
 export default betsSlice.reducer;

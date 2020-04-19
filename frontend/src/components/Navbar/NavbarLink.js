@@ -16,18 +16,13 @@ const StyledNavbarLink = styled(Link)`
   &:hover {
     background-color: #aaa;
   }
+
   &:active {
-    -webkit-box-shadow: inset 4px 4px 5px #a0a0a0;
-       -moz-box-shadow: inset 4px 4px 5px #a0a0a0;
-            box-shadow: inset 4px 4px 5px #a0a0a0;
-     font-size: .95em;
+    box-shadow: inset 4px 4px 5px #a0a0a0;
+    font-size: 0.95em;
   }
 `;
 
 export const NavbarLink = ({ to, title }) => {
-  return (
-    <StyledNavbarLink to={to}>
-      {title}
-    </StyledNavbarLink>
-  )
-}
+  return <StyledNavbarLink to={to}>{title}</StyledNavbarLink>;
+};
