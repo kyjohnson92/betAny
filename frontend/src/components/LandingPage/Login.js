@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Grid } from '@material-ui/core';
+import Paper from '@material-ui/core/Paper';
 import { BetAnyFormComponent } from '../Form';
 // import { loginUser } from '../../store/user/userSlice';
 
-const LoginFormContainer = styled(Grid)`
-  width: 288px;
-  height: 348px;
+const LoginFormContainer = styled(Paper)`
   background-color: #f1f2eb;
 `;
 
@@ -46,7 +44,7 @@ export const LoginComponent = () => {
   ];
 
   return (
-    <LoginFormContainer container direction="column" justify="center">
+    <LoginFormContainer elevation={2}>
       <BetAnyFormComponent
         initialValues={initialValues}
         validate={validate}

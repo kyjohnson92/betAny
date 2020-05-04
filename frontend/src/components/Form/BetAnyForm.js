@@ -2,27 +2,16 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { BetAnyTextField } from './';
 
-const FormTitle = styled.div`
-  font-size: 24px;
-  margin-bottom: 5px;
-`;
-
 const BetAnySubmitButton = styled(Button)`
-  width: 236px;
-  height: 60px;
-  background-color: #cbef43;
-  margin-top: 15px;
-  font-size: 18px;
-  font-weight: 600;
+  width: 100%;
 `;
 
-const BetAnyCenteredForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+const FormWrapper = styled(Form)`
+  margin: 1rem 0;
 `;
 
 /**
@@ -49,15 +38,32 @@ export const BetAnyFormComponent = ({
   <Formik initialValues={initialValues} validate={validate} onSubmit={onSubmit}>
     {fields.length
       ? ({ isSubmitting }) => (
-          <BetAnyCenteredForm>
-            <FormTitle>{title}</FormTitle>
-            {fields.map((fieldProps) => (
-              <BetAnyTextField key={fieldProps.name} {...fieldProps} />
-            ))}
-            <BetAnySubmitButton type="submit" disabled={isSubmitting}>
-              {submitButtonText}
-            </BetAnySubmitButton>
-          </BetAnyCenteredForm>
+          <FormWrapper>
+            <Grid container justify={'center'}>
+              <Grid item lg={12} md={12} sm={12} xs={12} container spacing={4}>
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                  <Typography variant={'h5'} component={'h2'} align={'center'}>
+                    {title}
+                  </Typography>
+                </Grid>
+                {fields.map((fieldProps) => (
+                  <Grid item lg={12} md={12} sm={12} xs={12}>
+                    <BetAnyTextField key={fieldProps.name} {...fieldProps} />
+                  </Grid>
+                ))}
+                <Grid item lg={12} md={12} sm={12} xs={12}>
+                  <BetAnySubmitButton
+                    variant={'contained'}
+                    color={'primary'}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {submitButtonText}
+                  </BetAnySubmitButton>
+                </Grid>
+              </Grid>
+            </Grid>
+          </FormWrapper>
         )
       : ''}
   </Formik>
