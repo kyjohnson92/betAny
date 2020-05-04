@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import Layout from '../Layout/Layout';
 import GridButton from '../shared/GridButton';
+import { LoginComponent } from './Login';
 
 // TODO:
 // - Choose fonts
@@ -143,7 +144,7 @@ function LandingPage() {
             md={10}
           >
             {/* Replace with Login Form */}
-
+            <LoginComponent />
             <GridButton text={'Sign Up'} />
           </Grid>
         </LoginFormAndSignupButton>
