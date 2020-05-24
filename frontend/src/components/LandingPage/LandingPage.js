@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import styled from 'styled-components';
 import Layout from '../Layout/Layout';
 import GridButton from '../shared/GridButton';
+import { LoginComponent } from './Login';
 
 // TODO:
 // - Choose fonts
@@ -81,7 +82,7 @@ const LoginFormAndSignupButton = styled(Grid)`
   display: none;
 
   ${'' /* Only display the login form on tablet sized devices and upwards */}
-  @media only screen and (orientation: landscape) and (min-height: 768px) {
+  @media only screen and (orientation: landscape) and (min-height: 600px) {
     grid-row: 2/4;
     grid-column: 3/4;
     display: flex;
@@ -100,7 +101,7 @@ const LoginAndSignupButtons = styled(Grid)`
     grid-column: 3/4;
   }
 
-  @media only screen and (orientation: landscape) and (min-height: 768px) {
+  @media only screen and (orientation: landscape) and (min-height: 600px) {
     display: none;
   }
 `;
@@ -139,11 +140,10 @@ function LandingPage() {
             direction={'column'}
             spacing={3}
             xl={6}
-            lg={8}
-            md={10}
+            lg={6}
+            md={8}
           >
-            {/* Replace with Login Form */}
-
+            <LoginComponent />
             <GridButton text={'Sign Up'} />
           </Grid>
         </LoginFormAndSignupButton>
